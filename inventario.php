@@ -7,18 +7,21 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Inicializar condición
+// Variables para el formulario
+$filtro = $_GET['filtro'] ?? '';
+$valor = $_GET['valor'] ?? '';
+$busqueda_enviada = isset($_GET['filtro']) && isset($_GET['valor']) && $_GET['valor'] !== '';
+
+// Armar condición WHERE si se hizo búsqueda
 $where = "";
+if ($busqueda_enviada) {
+    $filtro_db = $conexion->real_escape_string($filtro);
+    $valor_db = $conexion->real_escape_string($valor);
 
-// Verificar si hay búsqueda
-if (!empty($_GET['filtro']) && !empty($_GET['valor'])) {
-    $filtro = $conexion->real_escape_string($_GET['filtro']);
-    $valor = $conexion->real_escape_string($_GET['valor']);
-
-    if ($filtro == 'fecha_actualizacion') {
-        $where = "WHERE $filtro = '$valor'";
+    if ($filtro_db == 'fecha_actualizacion') {
+        $where = "WHERE $filtro_db = '$valor_db'";
     } else {
-        $where = "WHERE $filtro LIKE '%$valor%'";
+        $where = "WHERE $filtro_db LIKE '%$valor_db%'";
     }
 }
 
@@ -49,7 +52,7 @@ $resultado = $conexion->query($sql);
             text-align: left;
         }
         th {
-            background-color: #1c3e74;
+            background-color:rgb(76, 175, 79);
             color: white;
         }
         h1 {
@@ -61,22 +64,27 @@ $resultado = $conexion->query($sql);
 <body>
     <h1>Inventario</h1>
 
-    <!-- Formulario de búsqueda -->
-    <form method="GET" action="inventario.php" style="text-align: center; margin: 20px 0;">
-        <select name="filtro" required>
-            <option value="">-- Buscar por --</option>
-            <option value="clave" <?php if ($_GET['filtro'] ?? '' === 'clave') echo 'selected'; ?>>Clave</option>
-            <option value="nombre" <?php if ($_GET['filtro'] ?? '' === 'nombre') echo 'selected'; ?>>Nombre</option>
-            <option value="departamento" <?php if ($_GET['filtro'] ?? '' === 'departamento') echo 'selected'; ?>>Departamento</option>
-            <option value="fecha_actualizacion" <?php if ($_GET['filtro'] ?? '' === 'fecha_actualizacion') echo 'selected'; ?>>Fecha</option>
-        </select>
+<!-- Formulario de búsqueda -->
+<form method="GET" action="inventario.php" style="text-align: center; margin: 20px 0;">
+    <select name="filtro" required>
+        <option value="" <?php echo !$busqueda_enviada ? 'selected' : ''; ?>>-- Buscar por --</option>
+        <option value="clave" <?php echo ($filtro === 'clave' && $busqueda_enviada) ? 'selected' : ''; ?>>Clave</option>
+        <option value="nombre" <?php echo ($filtro === 'nombre' && $busqueda_enviada) ? 'selected' : ''; ?>>Nombre</option>
+        <option value="departamento" <?php echo ($filtro === 'departamento' && $busqueda_enviada) ? 'selected' : ''; ?>>Departamento</option>  
+    </select>
 
-        <input type="text" name="valor" placeholder="Escribe el valor a buscar" value="<?php echo $_GET['valor'] ?? ''; ?>" required>
-        <input type="submit" value="Buscar">
-        <a href="inventario.php">
-			<button type="button">Recargar</button>
+    <input type="text" name="valor" value="<?php echo htmlspecialchars($valor); ?>" placeholder="Escribe el valor a buscar" required>
+
+    <input type="submit" value="Buscar">
+    <a href="inventario.php">
+		<button type="button">Recargar</button>
 		</a>
-    </form>
+
+    <a href="principal.html">
+		<button type="button">Principal</button>
+	</a>
+
+</form>
 
     
 
