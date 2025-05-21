@@ -34,12 +34,36 @@ $resultado = $conexion->query($sql);
             color: white;
         }
         h1 {
-            text-align: center;
+            margin-left: 280px;
             color: #1c3e74;
         }
         img {
             border-radius: 5px;
         }
+
+        .principal {
+			margin-top: -315px;         /* un valor positivo */
+			padding-left: 675px;
+            display: flex;              /*Para ponerlos en horizoltal*/
+		}
+		
+		.principal button {
+			display: flex; 				/*Para que se acomoden uno debajo del otro*/
+			width: 150px;                /* Largo */
+			padding: 15px;             /* Ancho del boton*/
+            margin-right: 20px;     /* Espacio entre botones */
+            font-size: 16px;			/**Tamaño de la letra*/
+			cursor: pointer;			/*Forma cursor*/
+			background-color: #1c3e74;
+			color: white;
+			border: none;
+			border-radius: 8px;          
+			text-align: center;            /* Opcional: alinea texto dentro del botón a la izquierda */
+		}
+        .principal a {
+    		text-decoration: none;
+		}
+        
     </style>
 </head>
 <body>
@@ -78,5 +102,19 @@ $resultado = $conexion->query($sql);
         $conexion->close();
         ?>
     </table>
+
+    <div class="principal">
+        <a href="principal.html">
+        	<button type="button">Volver al inicio</button>
+        </a>
+
+        <a href="registro_empleados.html">
+			<button type="button">Registro</button>
+		</a>
+
+		<a href="modificar.html">
+			<button type="button">Modificar</button>
+		</a>
+	</div>
 </body>
 </html>

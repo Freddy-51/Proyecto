@@ -6,7 +6,7 @@
 
 	<style>
 		body {
-			margin: 50px;
+			margin: 25px;
 			background-color: #ffffff11;
 		}
 	
@@ -21,10 +21,10 @@
 		form { /*Cuadro que contiene los campos*/
 			width: 400px;
 			background-color: #c3f5d9;
-			padding: 20px;
+			padding: 15px;
 			border-radius: 10px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
-			margin-left: 100px; /*Distancia de la izquierda al cuadro*/
+			margin-left: 130px; /*Distancia de la izquierda al cuadro*/
 		}
 	
 		label {
@@ -38,7 +38,7 @@
 		input[type="date"],
 		select {
 			width: 100%;
-			padding: 8px; /*Ancho del campo*/
+			padding: 7px; /*Ancho del campo*/
 			margin-bottom: 0px; /*Espacio entre el campo y el nuevo label*/
 			border: 1px solid #ccc; /*Sombra y ancho*/
 			border-radius: 5px;
@@ -65,12 +65,16 @@
 			text-align: left;
 			padding-left: 700px;
 		}
+        .principal a {
+            text-decoration: none;
+        }
+
 		
 		.principal button {
 			display: block;				/*Para que se acomoden uno debajo del otro*/
 			width: 180px;                /* Largo */
 			padding: 15px;             /* Ancho del boton*/
-			margin-bottom: 30px;         /* Espacio entre botones */
+			margin-bottom: 50px;         /* Espacio entre botones */
 			font-size: 16px;			/**Tamaño de la letra*/
 			cursor: pointer;			/*Forma cursor*/
 			background-color: #1c3e74;
@@ -79,6 +83,8 @@
 			border-radius: 8px;          
 			text-align: center;            /* Opcional: alinea texto dentro del botón a la izquierda */
 		}	
+
+        
 	</style>
 
 </head>
@@ -98,7 +104,7 @@
         <input type="text" id="direccion" name="direccion" required><br><br>
     
         <label for="telefono">Teléfono:</label><br>
-        <input type="tel" id="telefono" name="telefono"
+        <input type="text" id="telefono" name="telefono"
                pattern="^\d{10}$"
                maxlength="10"
                title="Ingresa un número de 10 dígitos"
@@ -116,12 +122,8 @@
 		<a href="principal.html">
 			<button type="button">Volver al inicio</button>
 		</a>
-		<a href="empleados.php">
+		<a href="consultar_empleados.php">
 			<button type="button">Empleados</button>
-		</a>
-		<a href="modificar_empleados.html">
-			<button type="button">Modificar</button>
-		</a>
 	</div>
 	
 	
