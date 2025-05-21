@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EMPLEADOS</title>
+
+	<style>
+		body {
+			margin: 50px;
+			background-color: #ffffff11;
+		}
+	
+		h1 {
+			text-align: center;
+			color: #1c3e74;
+			/*text-align: center;*/
+			/*margin-left: 300px;*/
+			
+		}
+	
+		form { /*Cuadro que contiene los campos*/
+			width: 400px;
+			background-color: #c3f5d9;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
+			margin-left: 100px; /*Distancia de la izquierda al cuadro*/
+		}
+	
+		label {
+			display: block;
+			margin-top: 0px;
+			font-weight: bold;
+		}
+	
+		input[type="text"],
+		input[type="number"],
+		input[type="date"],
+		select {
+			width: 100%;
+			padding: 8px; /*Ancho del campo*/
+			margin-bottom: 0px; /*Espacio entre el campo y el nuevo label*/
+			border: 1px solid #ccc; /*Sombra y ancho*/
+			border-radius: 5px;
+			box-sizing: border-box;
+			text-align: left; /*Donde se escribe*/
+		}
+	
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			width: 100%;
+		}
+		
+		input[type="submit"]:hover { /*Boton de enviar */
+			background-color: #45a049; /*Color del boton*/
+		}
+
+		.principal {
+			margin-top: -450px;         /* un valor positivo */
+			text-align: left;
+			padding-left: 700px;
+		}
+		
+		.principal button {
+			display: block;				/*Para que se acomoden uno debajo del otro*/
+			width: 180px;                /* Largo */
+			padding: 15px;             /* Ancho del boton*/
+			margin-bottom: 30px;         /* Espacio entre botones */
+			font-size: 16px;			/**Tamaño de la letra*/
+			cursor: pointer;			/*Forma cursor*/
+			background-color: #1c3e74;
+			color: white;
+			border: none;
+			border-radius: 8px;          
+			text-align: center;            /* Opcional: alinea texto dentro del botón a la izquierda */
+		}	
+	</style>
+
+</head>
+<body>
+
+    <h1>Registro de Empleados</h1>
+
+    <form action="registro_empleados.php" method="POST" enctype="multipart/form-data">
+
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+    
+        <label for="email">Correo electronico:</label><br>
+        <input type="text" id="email" name="email" required><br><br>
+    
+        <label for="direccion">Dirección:</label><br>
+        <input type="text" id="direccion" name="direccion" required><br><br>
+    
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" id="telefono" name="telefono"
+               pattern="^\d{10}$"
+               maxlength="10"
+               title="Ingresa un número de 10 dígitos"
+               required><br><br>
+    
+        <label for="foto">Foto:</label><br>
+        <input type="file" id="foto" name="foto" accept="image/*" ><br><br>
+    
+        <input type="submit" value="Enviar">
+    
+    </form>
+    
+
+	<div class="principal">
+		<a href="principal.html">
+			<button type="button">Volver al inicio</button>
+		</a>
+		<a href="empleados.php">
+			<button type="button">Empleados</button>
+		</a>
+		<a href="modificar_empleados.html">
+			<button type="button">Modificar</button>
+		</a>
+	</div>
+	
+	
+</body>
+
+</html>

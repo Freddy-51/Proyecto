@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 } else {
-    header("Location: productos.html");
+    header("Location: registro_productos.html");
     exit();
 }
 ?>

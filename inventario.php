@@ -90,7 +90,7 @@ $resultado = $conexion->query($sql);
 
 
 
-    <table>
+<table>
         <tr>
             <th>ID</th>
             <th>Clave</th>
