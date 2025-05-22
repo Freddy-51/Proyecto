@@ -65,7 +65,7 @@ $resultado = $conexion->query($sql);
     <h1>Inventario</h1>
 
 <!-- Formulario de búsqueda -->
-<form method="GET" action="inventario.php" style="text-align: center; margin: 20px 0;">
+<form method="GET" action="" style="text-align: center; margin: 20px 0;">
     <select name="filtro" required>
         <option value="" <?php echo !$busqueda_enviada ? 'selected' : ''; ?>>-- Buscar por --</option>
         <option value="clave" <?php echo ($filtro === 'clave' && $busqueda_enviada) ? 'selected' : ''; ?>>Clave</option>
@@ -76,11 +76,12 @@ $resultado = $conexion->query($sql);
     <input type="text" name="valor" value="<?php echo htmlspecialchars($valor); ?>" placeholder="Escribe el valor a buscar" required>
 
     <input type="submit" value="Buscar">
-    <a href="inventario.php">
+    
+    <a href="consultar_inventario.php">
 		<button type="button">Recargar</button>
 		</a>
 
-    <a href="principal.html">
+    <a href="principal.php">
 		<button type="button">Principal</button>
 	</a>
 

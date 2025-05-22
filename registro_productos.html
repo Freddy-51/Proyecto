@@ -7,7 +7,7 @@
 	<style>
 		body {
 			margin: 30px;
-			background-color: #ffffff11;
+			background-color: #ffffff;
 		}
 	
 		h1 {
@@ -19,12 +19,12 @@
 		}
 	
 		form { /*Cuadro que contiene los campos*/
-			width: 400px;
+			width: 600px;
 			background-color: #c3f5d9;
-			padding: 20px;
+			padding: 25px;
 			border-radius: 10px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
-			margin-left: 100px; /*Distancia de la izquierda al cuadro*/
+			margin-left: 50px; /*Distancia de la izquierda al cuadro*/
 		}
 	
 		label {
@@ -37,9 +37,10 @@
 		input[type="number"],
 		input[type="date"],
 		select {
+
 			width: 100%;
 			padding: 8px; /*Ancho del campo*/
-			margin-bottom: 0px; /*Espacio entre el campo y el nuevo label*/
+			margin-bottom: 15px; /*Espacio entre el campo y el nuevo label*/
 			border: 1px solid #ccc; /*Sombra y ancho*/
 			border-radius: 5px;
 			box-sizing: border-box;
@@ -66,9 +67,9 @@
 
 
 		.principal {
-			margin-top: -650px;         /* un valor positivo */
+			margin-top: -360px;         /* un valor positivo */
 			text-align: left;
-			padding-left: 700px;
+			padding-left: 900px;
 		}
 		
 		.principal button {
@@ -84,6 +85,16 @@
 			border-radius: 8px;          
 			text-align: center;            /* Opcional: alinea texto dentro del botón a la izquierda */
 		}	
+
+		.contenedor-formulario {
+			display: flex;
+			gap: 20px;
+		}
+
+		.columna {
+			flex: 1;
+		}
+
 	</style>
 
 </head>
@@ -91,50 +102,58 @@
 
     <h1>Registro de Productos</h1>
 
-    <form action="registro_productos.php" method="POST">
-
-        <label for="clave">Clave (código de barras):</label><br>
-        <input type="text" id="clave" name="clave"
-       		pattern="^\d{1,14}$"
-      		 maxlength="14"
-      		 title="Ingresa solo números (máximo 14 dígitos)"
-      	required><br><br>
-
-        <label for="nombre">Nombre / Descripción:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
-
-        <label for="precio">Precio:</label><br>
-        <input type="number" id="precio" name="precio" step="0.01" required><br><br>
-
-		<label for="costo">Costo:</label><br>
-        <input type="number" id="costo" name="costo" step="0.01" required><br><br>
-
-        <label for="existencias">Cantidad:</label><br>
-        <input type="number" id="existencias" name="existencias" required><br><br>
-
-        <label for="unidad">Unidad de medida:</label><br>
-        <select id="unidad" name="unidad" required>
-            <option value="">-- Selecciona una unidad --</option>
-            <option value="pieza">Pieza</option>
-            <option value="paquete">Paquete</option>
-            <option value="kilo">Kilo</option>
-            <option value="costal">Costal</option>
-        </select><br><br>
-
-        <label for="departamento">Departamento:</label><br>
-        <input type="text" id="departamento" name="departamento" required><br><br>
-
-        <input type="submit" value="Enviar">
-		
-		
-    </form>
+	<form action="registro_productos.php" method="POST">
+		<div class="contenedor-formulario">
+			<div class="columna">
+				<label for="clave">Clave:</label>
+				<input type="text" name="clave" required>
+	
+				<label for="nombre">Nombre:</label>
+				<input type="text" name="nombre" required>
+	
+				<label for="departamento">Departamento:</label>
+				<input type="text" name="departamento" required>
+	
+				<label for="existencias">Existencias:</label>
+				<input type="number" name="existencias" step="1" min="1" required>
+			</div>
+	
+			<div class="columna">
+				<label for="costo">Costo:</label>
+				<input type="number" name="costo" step="1" min="0" required>
+				
+				<label for="precio">Precio:</label>
+				<input type="number" name="precio" step="1" min="0" required>
+				
+				<label for="unidad">Unidad:</label>
+				<select name="unidad" required>
+					<option value="pieza">Pieza</option>
+					<option value="paquete">Paquete</option>
+					<option value="kilo">Kilo</option>
+            		<option value="costal">Costal</option>
+				</select>
+			</div>
+		</div>
+	
+		<br>
+		<input type="submit" value="Registrar">
+	</form>
+	
 
 	<div class="principal">
-		<a href="principal.html">
-			<button type="button">Volver al inicio</button>
-		</a>
 		<a href="consultar_inventario.php">
 			<button type="button">Inventario</button>
+		</a>
+		<a href="formulario_importar.php">
+			<button type="button">Importar Productos</button>
+		</a>		
+		<a href="exportar_productos.php">
+			<button type="button">Exportar</button>
+		</a>
+		<a href="principal.php">
+			<button type="button">Volver al inicio</button>
+		</a>
+		
 
 	</div>
 	

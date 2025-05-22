@@ -108,7 +108,7 @@ $resultado = $conexion->query($sql);
             <button type="button" class="boton-modificar">Modificar</button>
          </a>
 
-        <a href="principal.html">
+        <a href="principal.php">
         	<button type="button">Volver al inicio</button>
         </a>
 	</div>
