@@ -38,6 +38,52 @@ $empleado_activo = $_GET['empleado'] ?? '';
             margin: 20px 0;
         }
 
+        .barra-superior {
+            display: flex;
+            align-items: center;
+            gap: 40px;              /* Separación entre clave y empleado */
+        }
+
+        .agregar-producto,
+        .empleado {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .agregar-producto label,
+        .empleado label {
+            font-size: 20px;
+            color: #1c3e74;
+        }
+
+        .agregar-producto input,
+        .empleado select {
+            padding: 8px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            background-color: rgb(242, 255, 254);
+            border-radius: 5px;
+            width: 180px;
+        }
+        .btn-enter {
+            background-color: #1c3e74;
+            color: white;
+            font-size: 16px;
+            padding: 9px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 42px; /* para alinear con el input */
+        }
+
+        .btn-enter:hover {
+            background-color: #2ca4a8;
+        }
+
+
+
+
         .container {
             display: flex;
             justify-content: space-between;
@@ -100,6 +146,8 @@ $empleado_activo = $_GET['empleado'] ?? '';
             width: 180px;
             text-align: center;
             padding: 20px;
+            margin-top: 40px;         /* un valor positivo */
+
         }
 
         .principal button {
@@ -125,11 +173,41 @@ $empleado_activo = $_GET['empleado'] ?? '';
 
     <h1>ABARROTES DOÑA LUZ</h1>
 
-    <div class="container">
+        
+    <div class="barra-superior">
 
+    <div class="empleado">
+        <form method="GET" action="">
+            <label for="empleado">Empleado activo:</label>
+            <select name="empleado" onchange="this.form.submit()">
+                <option value="">-- Selecciona un empleado --</option>
+                <?php foreach ($empleados as $emp): ?>
+                    <option value="<?php echo $emp['id_empleado']; ?>"
+                        <?php echo ($empleado_activo == $emp['id_empleado']) ? 'selected' : ''; ?>>
+                        <?php echo htmlspecialchars($emp['nombre']); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    </div>
+    <div class="agregar-producto">
+        <form method="POST" action="agregar_venta.php" class="form-agregar-producto" style="display: flex; align-items: center; gap: 10px;">
+            <label for="clave">Clave:</label>
+            <input type="text" id="clave" name="clave" required autocomplete="off">
+
+            <button type="submit" class="btn-enter">Enter</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+    <div class="container">
         <!-- Área de punto de venta -->
         <div class="punto-venta">
-
+            
             <table>
                 <thead>
                     <tr>
@@ -143,7 +221,7 @@ $empleado_activo = $_GET['empleado'] ?? '';
                 <tbody id="lista-productos">
                     <!-- Productos se agregarán aquí dinámicamente -->
                     <tr>
-                        <td>Producto</td>
+                        <td>Ejemplo</td>
                         <td>Ejemplo</td>
                         <td>$15.00</td>
                         <td>2</td>
@@ -165,7 +243,7 @@ $empleado_activo = $_GET['empleado'] ?? '';
                 <button type="submit">Productos</button>
             </form>
 
-            <form action="ventas.php">
+            <form action="principal.php">
                 <button type="submit">Detalles de Ventas</button>
             </form>
 
@@ -179,19 +257,6 @@ $empleado_activo = $_GET['empleado'] ?? '';
 
             <form action="registro_clientes.html">
                 <button type="submit">Clientes</button>
-            </form>
-
-            <form method="GET" action="">
-                <label for="empleado"><strong>Empleado activo:</strong></label>
-                <select name="empleado" onchange="this.form.submit()">
-                    <option value="">-- Selecciona un empleado --</option>
-                    <?php foreach ($empleados as $emp): ?>
-                        <option value="<?php echo $emp['id_empleado']; ?>" 
-                            <?php echo ($empleado_activo == $emp['id_empleado']) ? 'selected' : ''; ?>>
-                            <?php echo htmlspecialchars($emp['nombre']); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
             </form>
             
         </div>
