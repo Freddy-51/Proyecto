@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>PRODUCTOS</title>
+    <title>PROVEEDORES</title>
 
 	<style>
 		body {
-			margin: 30px;
+			margin: 25px;
 			background-color: #ffffff11;
 		}
 	
@@ -21,10 +21,10 @@
 		form { /*Cuadro que contiene los campos*/
 			width: 400px;
 			background-color: #c3f5d9;
-			padding: 20px;
+			padding: 15px;
 			border-radius: 10px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
-			margin-left: 100px; /*Distancia de la izquierda al cuadro*/
+			margin-left: 130px; /*Distancia de la izquierda al cuadro*/
 		}
 	
 		label {
@@ -38,7 +38,7 @@
 		input[type="date"],
 		select {
 			width: 100%;
-			padding: 8px; /*Ancho del campo*/
+			padding: 7px; /*Ancho del campo*/
 			margin-bottom: 0px; /*Espacio entre el campo y el nuevo label*/
 			border: 1px solid #ccc; /*Sombra y ancho*/
 			border-radius: 5px;
@@ -59,17 +59,16 @@
 		input[type="submit"]:hover { /*Boton de enviar */
 			background-color: #45a049; /*Color del boton*/
 		}
-		
-		.principal a {
-    		text-decoration: none;
-		}
-
 
 		.principal {
-			margin-top: -650px;         /* un valor positivo */
+			margin-top: -450px;         /* un valor positivo */
 			text-align: left;
 			padding-left: 700px;
 		}
+        .principal a {
+            text-decoration: none;
+        }
+
 		
 		.principal button {
 			display: block;				/*Para que se acomoden uno debajo del otro*/
@@ -84,59 +83,46 @@
 			border-radius: 8px;          
 			text-align: center;            /* Opcional: alinea texto dentro del botón a la izquierda */
 		}	
+
+        
 	</style>
 
 </head>
 <body>
 
-    <h1>Registro de Productos</h1>
+    <h1>Registro de Proveedores</h1>
 
-    <form action="registro_productos.php" method="POST">
+    <form action="registro_proveedores.php" method="POST">
 
-        <label for="clave">Clave (código de barras):</label><br>
-        <input type="text" id="clave" name="clave"
-       		pattern="^\d{1,14}$"
-      		 maxlength="14"
-      		 title="Ingresa solo números (máximo 14 dígitos)"
-      	required><br><br>
-
-        <label for="nombre">Nombre / Descripción:</label><br>
+        <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre" required><br><br>
-
-        <label for="precio">Precio:</label><br>
-        <input type="number" id="precio" name="precio" step="0.01" required><br><br>
-
-		<label for="costo">Costo:</label><br>
-        <input type="number" id="costo" name="costo" step="0.01" required><br><br>
-
-        <label for="existencias">Cantidad:</label><br>
-        <input type="number" id="existencias" name="existencias" required><br><br>
-
-        <label for="unidad">Unidad de medida:</label><br>
-        <select id="unidad" name="unidad" required>
-            <option value="">-- Selecciona una unidad --</option>
-            <option value="pieza">Pieza</option>
-            <option value="paquete">Paquete</option>
-            <option value="kilo">Kilo</option>
-            <option value="costal">Costal</option>
-        </select><br><br>
-
+    
+        <label for="email">Correo electronico:</label><br>
+        <input type="text" id="email" name="email" required><br><br>
+    
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono"
+               pattern="^\d{10}$"
+               maxlength="10"
+               title="Ingresa un número de 10 dígitos"
+               required><br><br>
+    
         <label for="departamento">Departamento:</label><br>
         <input type="text" id="departamento" name="departamento" required><br><br>
-
+    
         <input type="submit" value="Enviar">
-		
-		
+    
     </form>
+    
 
 	<div class="principal">
-		<a href="principal.html">
+		<a href="consultar_proveedores.php">
+			<button type="button">Proveedores</button>
+        </a>
+        <a href="principal.html">
 			<button type="button">Volver al inicio</button>
-		</a>
-		<a href="consultar_inventario.php">
-			<button type="button">Inventario</button>
-
-	</div>
+		</a>        
+    </div>
 	
 	
 </body>

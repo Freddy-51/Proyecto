@@ -8,7 +8,7 @@ if ($conexion->connect_error) {
 }
 
 // Consulta
-$sql = "SELECT id_empleado, nombre, email, direccion, telefono, foto FROM empleados ORDER BY id_empleado ASC";
+$sql = "SELECT id_cliente, nombre, email, telefono, direccion FROM clientes ORDER BY id_cliente ASC";
 $resultado = $conexion->query($sql);
 ?>
 
@@ -16,7 +16,7 @@ $resultado = $conexion->query($sql);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>EMPLEADOS</title>
+    <title>CLIENTES</title>
     <style>
         table {
             width: 90%;
@@ -42,7 +42,7 @@ $resultado = $conexion->query($sql);
         }
 
         .principal {
-			margin-top: -360px;         /* Desplazamineto vertical */
+			margin-top: -165px;         /* Desplazamineto vertical */
 			padding-left: 678px;        /* Desplazamineto horizontal */
             display: flex;              /*Para ponerlos en horizoltal*/
             text-align: center;
@@ -71,44 +71,37 @@ $resultado = $conexion->query($sql);
     </style>
 </head>
 <body>
-    <h1>Empleados</h1>
+    <h1>Clientes</h1>
 
     <table>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Correo electrónico</th>
-            <th>Dirección</th>
             <th>Teléfono</th>
-            <th>Foto</th>
+            <th>Direccion</th>
         </tr>
 
         <?php
         if ($resultado->num_rows > 0) {
             while($row = $resultado->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["id_empleado"] . "</td>";
+                echo "<td>" . $row["id_cliente"] . "</td>";
                 echo "<td>" . $row["nombre"] . "</td>";
                 echo "<td>" . $row["email"] . "</td>";
-                echo "<td>" . $row["direccion"] . "</td>";
                 echo "<td>" . $row["telefono"] . "</td>";
-                if (!empty($row["foto"])) {
-                    echo "<td><img src='fotos_empleados/" . $row["foto"] . "' width='80'></td>";
-                } else {
-                    echo "<td>Sin foto</td>";
-                }
+                echo "<td>" . $row["direccion"] . "</td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='6'>No hay empleados registrados.</td></tr>";
+            echo "<tr><td colspan='5'>No hay productos registrados.</td></tr>";
         }
-
         $conexion->close();
         ?>
     </table>
 
     <div class="principal">
-        <a href="registro_empleados.html">
+        <a href="registro_clientes.html">
 			<button type="button">Registro</button>
 		</a>
         <a href="modificar.html">
